@@ -1,0 +1,31 @@
+--- #installing the java and tomcat
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: installing java
+      yum:
+        name: java
+        state: installed
+
+    - name: downloading the tomcat
+      get_url:
+        url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.0.18/bin/apache-tomcat-10.0.18.tar.gz
+        dest: /opt
+
+    - name: unzip the tomcat file
+      unarchive:
+        src: /opt/apache-tomcat-10.0.18.tar.gz
+        dest: /opt
+        remote_src: yes
+
+    - name: Executable permission
+      file:
+        path: /opt/apache-tomcat-10.0.18/bin/startup.sh
+        mode: 0777
+
+    - name: start the tomcat services
+      shell: nohup ./startup.sh
+      args:
+        chdir: /opt/apache-tomcat-10.0.18/bin
+

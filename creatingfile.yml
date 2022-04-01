@@ -1,0 +1,9 @@
+--- #creating a file
+- hosts: webservers[0]
+  become: yes
+
+  tasks:
+      - name: create a file
+        file:
+          path: /home/ansible/chandan
+          state: touch

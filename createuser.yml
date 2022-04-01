@@ -1,0 +1,17 @@
+--- #creating a user
+- hosts : all
+  become: true
+
+  tasks:
+    - name: create a user
+      user:
+        name: rohit
+        state: absent
+      when: ansible_os_family == "Debian"    
+
+    - name: another user
+      user:
+        name: ranga
+        state: absent
+      when: ansible_os_family == "RedHat"
+

@@ -1,0 +1,9 @@
+--- #creating a directory
+- hosts: webservers[-1]
+  become: yes
+
+  tasks:
+    - name: create a directory
+      file:
+       path: /home/ansible/chandan
+       state: directory

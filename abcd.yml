@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: creating a file
+      file:
+        path: /home/ansible/chandanfile
+        state: touch
+
+    - name: creating a directory
+      file:
+        path: /home/ansible/chandanfile1
+        state: directory
+
+    - name: copying the file
+      copy:
+        src: /home/ansible/chandanfile
+        dest: /tmp

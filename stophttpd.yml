@@ -1,0 +1,9 @@
+--- #stopping the httpd service
+- hosts: all
+  become: true
+
+  tasks:
+    - name : stopping the httpd service
+      service:
+       name: httpd
+       state: stopped    

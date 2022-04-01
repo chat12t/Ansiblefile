@@ -1,0 +1,17 @@
+--- # my handlers section
+- hosts: all
+  become: true
+
+  tasks:
+    - name: installing httpd into webservers
+      yum:
+       name: httpd
+       state: installed
+      notify: start the httpd service
+
+  handlers:
+
+    - name: start the httpd service
+      service:
+        name: httpd
+        state: started

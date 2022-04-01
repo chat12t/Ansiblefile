@@ -1,0 +1,9 @@
+--- #removing the httpd package
+- hosts: webservers
+  become: true
+
+  tasks:
+    - name: removing the httpd package
+      yum:
+        name: httpd
+        state: absent

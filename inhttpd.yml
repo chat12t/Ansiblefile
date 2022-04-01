@@ -1,0 +1,10 @@
+--- #installing htttpd S/W 
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Install the httpd S/W
+      yum: name=httpd state=present
+
+    - name: Starting the services
+      service: name=httpd state=started enabled=yes
